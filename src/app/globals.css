@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* Dark mode follows the data-theme attribute set by the theme script,
+   so the user's Light / Dark / System choice wins over the OS setting. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  /* Columbia blue: 200 is Columbia's light blue, 700 its dark navy. */
+  --color-brand-50: #f0f7fc;
+  --color-brand-100: #dcecf7;
+  --color-brand-200: #b9d9eb;
+  --color-brand-300: #8cbfdd;
+  --color-brand-400: #5b9fcb;
+  --color-brand-500: #3a82b8;
+  --color-brand-600: #2a68a0;
+  --color-brand-700: #1d4f91;
+  --color-brand-800: #1a4176;
+  --color-brand-900: #183760;
+  --color-brand-950: #10233f;
+
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  color-scheme: light;
+  --background: #f6f8fb;
+  --foreground: #18181b;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #0b0f17;
+  --foreground: #ededed;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
